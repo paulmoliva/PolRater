@@ -1,0 +1,19 @@
+<h1>All Politicians</h1>
+
+<ul id='characters'</ul>
+  <% @characters.each do |character| %>
+    <li>
+      <%= character.character_name %>
+    </li>
+  <% end %>
+</ul>
+
+<h1>Smartest Politicians</h1>
+
+<ol id='characters'</ol>
+  <% sorted_category(1).each do |character| %>
+    <li>
+      <%= character.character_name %> - <%= character.category_score(1).round(2) %>
+    </li>
+  <% end %>
+</ol>

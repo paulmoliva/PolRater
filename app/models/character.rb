@@ -36,7 +36,7 @@ class Character < ActiveRecord::Base
   end
 
   def self.random_character
-    rand(self.all.length)
+    rand(self.all.length) + 1
   end
 
   def self.random_pair

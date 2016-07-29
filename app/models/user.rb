@@ -1,10 +1,11 @@
 class User < ActiveRecord::Base
-  validates :user_name, presence: true, uniqueness: true
-
+  authenticates_with_sorcery!
+  validates :user_name, :email, presence: true, uniqueness: true
+  validates_confirmation_of :password, message: "should match confirmation", if: :password
   has_many :ratings
 
   def record_rating!(category_id, winner_id, loser_id)
-    raise 'cannot have same winner and loser' if winnner_id == loser_id
+    raise 'cannot have same winner and loser' if winner_id == loser_id
     Rating.create!(category_id: category_id,
                    winner_id: winner_id,
                    loser_id: loser_id,

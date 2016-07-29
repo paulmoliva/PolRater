@@ -7,8 +7,22 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+  <div id="container">
+    <div id="content">
+      <%= yield %>
+      <hr>
+      <h6>
+        <% if logged_in? %>
+          <%= "Logged in as #{current_user.email}" %>
+          <%= link_to "(logout)", logout_path %>
+        <% else %>
+          <%= link_to "(login)", login_path %>
+        <% end %>
+        <% if logged_in? && current_user.admin %>
+          <%= link_to 'Admin Panel', new_character_path %>
+        <% end %>
+      </h6>
+    </div>
+  </div>
 </body>
 </html>
