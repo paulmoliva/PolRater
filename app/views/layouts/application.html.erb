@@ -8,40 +8,40 @@
 </head>
 <body>
 
-  <nav class="navbar navbar-dark bg-inverse">
+  <div id="container">
+    <nav class="navbar navbar-dark bg-inverse">
 
       <!-- <a class="navbar-brand" href="#">
-        <img alt="Brand" src="...">
-      </a> -->
-      <ul class="nav navbar-nav">
-        <li class="nav-item">
-          <%= link_to 'Rate Politicians', ratings_path %>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'Scores', characters_path %>
-        </li>
-      </ul>
+      <img alt="Brand" src="...">
+    </a> -->
+    <ul class="nav navbar-nav">
+      <li class="nav-item">
+        <%= link_to 'Rate Politicians', ratings_path %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Scores', characters_path %>
+      </li>
+    </ul>
 
-    </nav>
-  <div id="container">
+  </nav>
 
-    <div id="content">
-      <p class="flash"><%= flash.notice %></p>
-      <%= yield %>
-      <hr>
-      <h6>
-        <% if logged_in? %>
-          <%= "Logged in as #{current_user.email}" %>
-          <%= link_to "(logout)", logout_path %>
-        <% else %>
-          <%= link_to "Login", login_path %> |
-          <%= link_to "Sign up", new_user_path %>
-        <% end %>
-        <% if logged_in? && current_user.admin %>
-          <%= link_to 'Admin Panel', new_character_path %>
-        <% end %>
-      </h6>
-    </div>
+  <div id="content">
+    <p class="flash"><%= flash.notice %></p>
+    <%= yield %>
+    <hr>
+    <h6>
+      <% if logged_in? %>
+      <%= "Logged in as #{current_user.email}" %>
+      <%= link_to "(logout)", logout_path %>
+      <% else %>
+      <%= link_to "Login", login_path %> |
+      <%= link_to "Sign up", new_user_path %>
+      <% end %>
+      <% if logged_in? && current_user.admin %>
+      <%= link_to 'Admin Panel', new_character_path %>
+      <% end %>
+    </h6>
+  </div>
   </div>
 </body>
 </html>

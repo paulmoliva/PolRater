@@ -1,22 +1,26 @@
 <% if current_user %>
-  <h3>
+<div class = "row">
+  <div class = "col-md-2">
+  </div>
+  <div class = "col-md-8" style="border-style: solid; border-radius: 5px;">
+  <h3 style= "text-align: center;">
     <%=@user.user_name=%> is rating!
   </h3>
   <% r = rand(@num_categories) %>
   <% pair = @user.get_new_pair_to_rate(r) %>
 
-  <h1>
+  <h1 style= "text-align: center;">
     who is <%= get_category(r + 1).category_name =%>er?
   </h1>
 
   <% name0 = get_character(pair[0]).character_name %>
   <% name1 = get_character(pair[1]).character_name %>
 
-  <h2><%= link_to name0, '#', :onclick => "vote_fn(#{r+1}, #{pair[0]}, #{pair[1]})" %></h2>
-  <%= link_to image_tag("#{name0.split.join('_').downcase}.jpg", width: "128", class: "img-circle"), '#', :onclick => "vote_fn(#{r+1}, #{pair[0]}, #{pair[1]})" %>
-  <h1> OR </h1>
-  <h2><%= link_to name1, '#', :onclick => "vote_fn(#{r+1}, #{pair[1]}, #{pair[0]})" %></h2>
-  <%= link_to image_tag("#{name1.split.join('_').downcase}.jpg", width: "128", class: "img-circle"), '#', :onclick => "vote_fn(#{r+1}, #{pair[1]}, #{pair[0]})"  %>
+  <h2 style= "text-align: center;"><%= link_to name0, '#', :onclick => "vote_fn(#{r+1}, #{pair[0]}, #{pair[1]})" %></h2>
+  <%= link_to image_tag("#{name0.split.join('_').downcase}.jpg", width: "128", class: "img-circle", style: "display:block; margin:auto;"), '#', :onclick => "vote_fn(#{r+1}, #{pair[0]}, #{pair[1]})" %>
+  <h1 style= "text-align: center;"> OR </h1>
+  <h2 style= "text-align: center;"><%= link_to name1, '#', :onclick => "vote_fn(#{r+1}, #{pair[1]}, #{pair[0]})" %></h2>
+  <%= link_to image_tag("#{name1.split.join('_').downcase}.jpg", width: "128", class: "img-circle", style: "display:block; margin:auto; padding:5px" ), '#', :onclick => "vote_fn(#{r+1}, #{pair[1]}, #{pair[0]})"  %>
 
   <%= javascript_tag do %>
       function vote_fn(cat, ch1, ch2) {
@@ -32,3 +36,7 @@
       }
   <% end %>
 <% end %>
+</div>
+<div class = "col-md-2">
+</div>
+</div>

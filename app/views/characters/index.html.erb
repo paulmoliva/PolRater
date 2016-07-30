@@ -1,22 +1,57 @@
-<h1>All Politicians</h1>
+<div class = "row">
+  <div class = "col-md-2">
+  </div>
+  <div class = "col-md-8" style="border-style: solid; border-radius: 5px;">
+    <div class="panel-group" id="accordion">
 
-<ul id='characters'</ul>
-  <% @characters.each do |character| %>
-    <li>
-      <%= character.character_name %>
-    </li>
-  <% end %>
-</ul>
+      <% @categories[0...1].each do |cat| %>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%=cat.category_name=%>">
+              <%= cat.category_name.capitalize %>est Politicians</h1>
+            </a>
+          </h3>
+        </div>
+        <div id="collapse<%=cat.category_name=%>" class="panel-collapse collapse in">
+          <div class="panel-body">
+            <ol id='characters'>
+              <% sorted_category(cat.id).each do |character| %>
+              <li>
+                <%= character.character_name %> - <%= character.category_score(cat.id).round(1) %>
+              </li>
+              <% end %>
+            </ol>
+          </div>
+        </div>
+        <%end%>
+        <% @categories[1..-1].each do |cat| %>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%=cat.category_name=%>">
+                <%= cat.category_name.capitalize %>est Politicians</h1>
+              </a>
+            </h3>
+          </div>
+          <div id="collapse<%=cat.category_name=%>" class="panel-collapse collapse">
+            <div class="panel-body">
+              <ol id='characters'>
+                <% sorted_category(cat.id).each do |character| %>
+                <li>
+                  <%= character.character_name %> - <%= character.category_score(cat.id).round(1) %>
+                </li>
+                <% end %>
+              </ol>
+            </div>
+          </div>
 
-<% @categories.each do |cat| %>
+          <%end %>
 
-  <h1><%= cat.category_name %>est Politicians</h1>
-  <ol id='characters'>
-    <% sorted_category(cat.id).each do |character| %>
-      <li>
-        <%= character.character_name %> - <%= character.category_score(cat.id).round(1) %>
-      </li>
-    <% end %>
-  </ol>
-
-<%end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class = "col-md-2">
+  </div>
+</div>
