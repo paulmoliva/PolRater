@@ -1,7 +1,14 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-    before_filter :require_login, except: [:new]
-#TODO Add before filters to all controllers
+  before_filter :require_login, except: [:new, :create]
+  # after_filter :flash_notice, :except => :index
+
+  # def flash_notice
+  #     if !@reservation.flash_notice.blank?
+  #        flash[:notice] = @reservation.flash_notice
+  #     end
+  # end
+
   # GET /users
   # GET /users.json
   def index
@@ -29,7 +36,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        format.html { redirect_to login_path, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }

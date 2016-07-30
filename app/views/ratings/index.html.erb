@@ -1,42 +1,42 @@
 <% if current_user %>
-<div class = "row">
-  <div class = "col-md-2">
-  </div>
-  <div class = "col-md-8" style="border-style: solid; border-radius: 5px;">
-  <h3 style= "text-align: center;">
-    <%=@user.user_name=%> is rating!
-  </h3>
-  <% r = rand(@num_categories) %>
-  <% pair = @user.get_new_pair_to_rate(r) %>
 
-  <h1 style= "text-align: center;">
-    who is <%= get_category(r + 1).category_name =%>er?
-  </h1>
+    <h3 style= "text-align: center;">
+      Tell me, <%=@user.user_name.capitalize=%>:
+    </h3>
+    <% r = rand(@num_categories) %>
+    <% pair = @user.get_new_pair_to_rate(r+1) %>
 
-  <% name0 = get_character(pair[0]).character_name %>
-  <% name1 = get_character(pair[1]).character_name %>
+    <h1 style= "text-align: center;">
+      Who is <%= get_category(r + 1).category_name =%>?
+    </h1>
 
-  <h2 style= "text-align: center;"><%= link_to name0, '#', :onclick => "vote_fn(#{r+1}, #{pair[0]}, #{pair[1]})" %></h2>
-  <%= link_to image_tag("#{name0.split.join('_').downcase}.jpg", width: "128", class: "img-circle", style: "display:block; margin:auto;"), '#', :onclick => "vote_fn(#{r+1}, #{pair[0]}, #{pair[1]})" %>
-  <h1 style= "text-align: center;"> OR </h1>
-  <h2 style= "text-align: center;"><%= link_to name1, '#', :onclick => "vote_fn(#{r+1}, #{pair[1]}, #{pair[0]})" %></h2>
-  <%= link_to image_tag("#{name1.split.join('_').downcase}.jpg", width: "128", class: "img-circle", style: "display:block; margin:auto; padding:5px" ), '#', :onclick => "vote_fn(#{r+1}, #{pair[1]}, #{pair[0]})"  %>
+    <% name0 = get_character(pair[0]).character_name %>
+    <% name1 = get_character(pair[1]).character_name %>
 
-  <%= javascript_tag do %>
-      function vote_fn(cat, ch1, ch2) {
-          /* Assuming you have jQuery */
-          $.post('/ajax/vote.json', {
-               ch1: ch1,
-               ch2: ch2,
-               cat: cat
-          }, function(data) {
-               var output = data.result;
-               /* output should be 150 if successful */
-          });
-      }
-  <% end %>
+    <h2 style= "text-align: center;"><%= link_to name0, '#', :onclick => "vote_fn(#{r+1}, #{pair[0]}, #{pair[1]})" %></h2>
+    <%= link_to image_tag("#{name0.split.join('_').downcase}.jpg", width: "128", class: "img-circle", style: "display:block; margin:auto; padding:5px"), '#', :onclick => "vote_fn(#{r+1}, #{pair[0]}, #{pair[1]})" %>
+    <h1 style= "text-align: center;"> OR </h1>
+    <h2 style= "text-align: center;"><%= link_to name1, '#', :onclick => "vote_fn(#{r+1}, #{pair[1]}, #{pair[0]})" %></h2>
+    <%= link_to image_tag("#{name1.split.join('_').downcase}.jpg", width: "128", class: "img-circle", style: "display:block; margin:auto; padding:5px" ), '#', :onclick => "vote_fn(#{r+1}, #{pair[1]}, #{pair[0]})"  %>
+
+    <%= javascript_tag do %>
+        function vote_fn(cat, ch1, ch2) {
+            /* Assuming you have jQuery */
+            $.post('/ajax/vote.json', {
+                 ch1: ch1,
+                 ch2: ch2,
+                 cat: cat
+            }, function(data) {
+                 var output = data.result;
+                 /* output should be 150 if successful */
+            });
+        }
+    <% end %>
+    
+<% else %>
+
+  <h1>Welcome to the Alaska Politician Rater!</h1>
+  <h2>Please <%= link_to "Login", login_path %> or <%= link_to "Sign up", signup_path %> to play.</h2>
+
+
 <% end %>
-</div>
-<div class = "col-md-2">
-</div>
-</div>

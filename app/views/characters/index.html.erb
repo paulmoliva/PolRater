@@ -1,40 +1,18 @@
-<div class = "row">
-  <div class = "col-md-2">
-  </div>
-  <div class = "col-md-8" style="border-style: solid; border-radius: 5px;">
-    <div class="panel-group" id="accordion">
 
-      <% @categories[0...1].each do |cat| %>
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%=cat.category_name=%>">
-              <%= cat.category_name.capitalize %>est Politicians</h1>
-            </a>
-          </h3>
-        </div>
-        <div id="collapse<%=cat.category_name=%>" class="panel-collapse collapse in">
-          <div class="panel-body">
-            <ol id='characters'>
-              <% sorted_category(cat.id).each do |character| %>
-              <li>
-                <%= character.character_name %> - <%= character.category_score(cat.id).round(1) %>
-              </li>
-              <% end %>
-            </ol>
-          </div>
-        </div>
-        <%end%>
-        <% @categories[1..-1].each do |cat| %>
+    <% user_rating_count = current_user.ratings.count %>
+    <% if user_rating_count >= 25 %>
+      <div class="panel-group" id="accordion">
+
+        <% @categories[0...1].each do |cat| %>
         <div class="panel panel-default">
           <div class="panel-heading">
             <h3 class="panel-title">
               <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%=cat.category_name=%>">
-                <%= cat.category_name.capitalize %>est Politicians</h1>
+                Alaska's <%= cat.super.capitalize %> Politicians</h1>
               </a>
             </h3>
           </div>
-          <div id="collapse<%=cat.category_name=%>" class="panel-collapse collapse">
+          <div id="collapse<%=cat.category_name=%>" class="panel-collapse collapse in">
             <div class="panel-body">
               <ol id='characters'>
                 <% sorted_category(cat.id).each do |character| %>
@@ -45,13 +23,36 @@
               </ol>
             </div>
           </div>
+          <%end%>
+          <% @categories[1..-1].each do |cat| %>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%=cat.category_name.split.join=%>">
+                  Alaska's <%= cat.super.split.map(&:capitalize).join(' ') %> Politicians</h1>
+                </a>
+              </h3>
+            </div>
+            <div id="collapse<%=cat.category_name.split.join=%>" class="panel-collapse collapse">
+              <div class="panel-body">
+                <ol id='characters'>
+                  <% sorted_category(cat.id).each do |character| %>
+                  <li>
+                    <%= character.character_name %> - <%= character.category_score(cat.id).round(1) %>
+                  </li>
+                  <% end %>
+                </ol>
+              </div>
+            </div>
 
-          <%end %>
+            <%end %>
 
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-  <div class = "col-md-2">
-  </div>
-</div>
+      
+    <% else %>
+      <h3>You must give at least 25 ratings to view the scores!</h3>
+      <h3>You currently have <%= user_rating_count %> ratings.</h3>
+      <h3><%= link_to "Go rate some politicians!", ratings_path =%></h3>
+    <% end %>

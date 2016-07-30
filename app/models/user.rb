@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   validates :user_name, :email, presence: true, uniqueness: true
   validates_confirmation_of :password, message: "should match confirmation", if: :password
   has_many :ratings
+  # attr_accessor :flash_notice
 
   def record_rating!(category_id, winner_id, loser_id)
     raise 'cannot have same winner and loser' if winner_id == loser_id
@@ -10,6 +11,7 @@ class User < ActiveRecord::Base
                    winner_id: winner_id,
                    loser_id: loser_id,
                    user_id: id)
+    # self.flash_notice = "You think #{Character.find(winner_id).character_name} is #{Category.find(category_id).category_name} than #{Character.find(loser_id).character_name}!"
   end
 
   def already_rated?(character1, character2, category_id)

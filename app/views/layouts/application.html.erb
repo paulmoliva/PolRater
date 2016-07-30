@@ -5,15 +5,13 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <%=favicon_link_tag 'favicon.jpg' %>
 </head>
 <body>
 
   <div id="container">
-    <nav class="navbar navbar-dark bg-inverse">
-
-      <!-- <a class="navbar-brand" href="#">
-      <img alt="Brand" src="...">
-    </a> -->
+    <nav class="navbar navbar-dark bg-inverse" style="border-radius: 0px">
+      <a class="navbar-brand" href="http://pauloliva.com"><%= image_tag('favicon2.jpg', width:"24") %></a>
     <ul class="nav navbar-nav">
       <li class="nav-item">
         <%= link_to 'Rate Politicians', ratings_path %>
@@ -23,24 +21,53 @@
       </li>
     </ul>
 
+    <ul class="nav navbar-nav" style="float: right">
+      <li class ="nav-item">
+        <% if logged_in? %>
+        <%= "Logged in as #{current_user.email}" %>
+        <%= link_to "(logout)", logout_path %>
+        <% else %>
+        <%= link_to "Login", login_path %> |
+        <%= link_to "Sign up", signup_path %>
+        <% end %>
+        <% if logged_in? && current_user.admin %>
+        <%= link_to 'Admin Panel', new_character_path %>
+        <% end %>
+      </li>
+    </ul>
+
+
   </nav>
 
   <div id="content">
     <p class="flash"><%= flash.notice %></p>
+    <div class = "row">
+      <div class = "col-md-2">
+        <% if logged_in? %>
+          <% user_rating_count = current_user.ratings.count %>
+          <p style = "text-align:center;">You've made <%=user_rating_count%> ratings!</p>
+        <% end %>
+      </div>
+      <div class = "col-md-8" id = "ratings" style="border-style: solid; border-radius: 5px; background-color: rgba(159,159,159, 0.85)"">
     <%= yield %>
+    </div>
+    <div class = "col-md-2">
+    </div>
+  </div>
+  
     <hr>
-    <h6>
+    <!-- <h6>
       <% if logged_in? %>
       <%= "Logged in as #{current_user.email}" %>
       <%= link_to "(logout)", logout_path %>
       <% else %>
       <%= link_to "Login", login_path %> |
-      <%= link_to "Sign up", new_user_path %>
+      <%= link_to "Sign up", signup_path %>
       <% end %>
       <% if logged_in? && current_user.admin %>
       <%= link_to 'Admin Panel', new_character_path %>
       <% end %>
-    </h6>
+    </h6> -->
   </div>
   </div>
 </body>

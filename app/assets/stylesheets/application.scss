@@ -14,3 +14,66 @@
  *= require_self
  */
 @import "bootstrap";
+
+body {
+    background: url("alaska.png") no-repeat 0% 0% fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+
+h1, h2, h3, h4 {
+  text-align: center;
+}
+
+#login_pw, #login_email, #login_submit {
+    display: inline-block;
+    text-align: center;
+    }
+
+#ratings{
+  text-align: center;
+  ol {
+    display: inline-block;
+    font-weight: bolder;
+    color: #FFF700
+    }
+  a {
+    color: #01004A;
+    }
+  }
+
+.actions{
+  margin: 5px;
+
+  input[type=button], input[type=submit] {
+    background-color: #01004A;
+    border: none;
+    color: yellow;
+    padding: 8px 16px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+}
+
+.field {
+  padding-top: 5px;
+  padding-bottom: 2px;
+
+  label {
+    margin-bottom: 0px;
+    font-weight: bolder;
+  }
+
+  input {
+    margin-top: 0px;
+    margin-bottom: 4px;
+    border-radius: 4px;
+  }
+}
+
+.flash {
+  background-color: rgba(255, 247, 0, 0.75)
+}
