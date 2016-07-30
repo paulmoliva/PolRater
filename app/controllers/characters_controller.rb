@@ -1,13 +1,16 @@
 class CharactersController < ApplicationController
+before_filter :require_login
+
 
   def index
     @characters = Character.all
+    @categories = Category.all
   end
 
   # GET /characters/1
   # GET /characters/1.json
   def show
-    @character= Character.last
+    @character= Character.find(params[:id])
   end
 
   # GET /characters/new
@@ -17,6 +20,7 @@ class CharactersController < ApplicationController
 
   # GET /characters/1/edit
   def edit
+    @character= Character.find(params[:id])
   end
 
   # POST /characters
@@ -74,8 +78,10 @@ class CharactersController < ApplicationController
 
   helper_method :sorted_category
   def sorted_category(category_id)
-    chars = @characters.reject{|c| c.category_score(category_id).nan?}
-    chars.sort_by{|c| c.category_score(1)}.reverse
+    chars = @characters.reject{|c| c.category_score(category_id).nil?}
+    chars.sort_by{|c| c.category_score(category_id)}.reverse
   end
+
+
 
 end

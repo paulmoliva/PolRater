@@ -1,5 +1,9 @@
-<h1>New Character</h1>
+<% if current_user.admin %>
 
-<%= render 'form' %>
+  <h1>New Character</h1>
 
-<%= link_to 'Back', new_character_path %>
+  <%= render 'form' %>
+
+  <%= link_to 'new character', new_character_path %> <%= link_to 'new category', new_category_path %>
+
+<% end %>

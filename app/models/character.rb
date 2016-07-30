@@ -17,7 +17,7 @@ class Character < ActiveRecord::Base
 
   def total_score
     win_score = wins.count * 100
-    win_score.fdiv(total_ratings)
+    win_score / (total_ratings)
   end
 
   def category_wins(category_id)
@@ -32,7 +32,8 @@ class Character < ActiveRecord::Base
     w = category_wins(category_id)
     l = category_losses(category_id)
     total = l + w
-    (w * 100).fdiv(total)
+    return (w * 100).fdiv(total) if total != 0
+    nil
   end
 
   def self.random_character

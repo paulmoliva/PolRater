@@ -1,30 +1,34 @@
-<h3>
-  <%=@user.user_name=%> is rating!
-</h3>
-<% r = rand(@categories.length) %>
-<% pair = @user.get_new_pair_to_rate(r) %>
-<% until @user.valid_pair?(pair[0], pair[1], r) %>
-  <% r = rand(@categories.length) %>
-  <%pair = @user.get_new_pair_to_rate(r) %>
-<% end %>
-<h1>
-  who is <%= get_category(r + 1).category_name =%>er?
-</h1>
-<%=pair[0]=%>
-<h2><%= link_to get_character(pair[0]).character_name, '#', :onclick => "vote_fn(#{r+1}, #{pair[0]}, #{pair[1]})" %></h2>
-<h1> OR </h1>
-<h2><%= link_to get_character(pair[1]).character_name, '#', :onclick => "vote_fn(#{r+1}, #{pair[1]}, #{pair[0]})" %></h2>
+<% if current_user %>
+  <h3>
+    <%=@user.user_name=%> is rating!
+  </h3>
+  <% r = rand(@num_categories) %>
+  <% pair = @user.get_new_pair_to_rate(r) %>
 
-<%= javascript_tag do %>
-    function vote_fn(cat, ch1, ch2) {
-        /* Assuming you have jQuery */
-        $.post('/ajax/vote.json', {
-             ch1: ch1,
-             ch2: ch2,
-             cat: cat
-        }, function(data) {
-             var output = data.result;
-             /* output should be 150 if successful */
-        });
-    }
+  <h1>
+    who is <%= get_category(r + 1).category_name =%>er?
+  </h1>
+
+  <% name0 = get_character(pair[0]).character_name %>
+  <% name1 = get_character(pair[1]).character_name %>
+
+  <h2><%= link_to name0, '#', :onclick => "vote_fn(#{r+1}, #{pair[0]}, #{pair[1]})" %></h2>
+  <%= link_to image_tag("#{name0.split.join('_').downcase}.jpg", width: "128", class: "img-circle"), '#', :onclick => "vote_fn(#{r+1}, #{pair[0]}, #{pair[1]})" %>
+  <h1> OR </h1>
+  <h2><%= link_to name1, '#', :onclick => "vote_fn(#{r+1}, #{pair[1]}, #{pair[0]})" %></h2>
+  <%= link_to image_tag("#{name1.split.join('_').downcase}.jpg", width: "128", class: "img-circle"), '#', :onclick => "vote_fn(#{r+1}, #{pair[1]}, #{pair[0]})"  %>
+
+  <%= javascript_tag do %>
+      function vote_fn(cat, ch1, ch2) {
+          /* Assuming you have jQuery */
+          $.post('/ajax/vote.json', {
+               ch1: ch1,
+               ch2: ch2,
+               cat: cat
+          }, function(data) {
+               var output = data.result;
+               /* output should be 150 if successful */
+          });
+      }
+  <% end %>
 <% end %>

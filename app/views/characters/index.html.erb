@@ -8,12 +8,15 @@
   <% end %>
 </ul>
 
-<h1>Smartest Politicians</h1>
+<% @categories.each do |cat| %>
 
-<ol id='characters'</ol>
-  <% sorted_category(1).each do |character| %>
-    <li>
-      <%= character.character_name %> - <%= character.category_score(1).round(2) %>
-    </li>
-  <% end %>
-</ol>
+  <h1><%= cat.category_name %>est Politicians</h1>
+  <ol id='characters'>
+    <% sorted_category(cat.id).each do |character| %>
+      <li>
+        <%= character.character_name %> - <%= character.category_score(cat.id).round(1) %>
+      </li>
+    <% end %>
+  </ol>
+
+<%end %>

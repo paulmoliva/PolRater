@@ -41,4 +41,5 @@ class User < ActiveRecord::Base
   def valid_pair?(character1, character2, category_id)
     character1 != character2 && !already_rated?(character1, character2, category_id)
   end
+
 end

@@ -1,8 +1,11 @@
 class RatingsController < ApplicationController
+  before_filter :require_login, except: [:index]
   def index
     @user = current_user
     @characters = Character.all
     @categories = Category.all
+    @num_categories = Category.all.count
+
   end
 
   # POST /ajax/vote
