@@ -32,6 +32,7 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
+    user_params[:email].downcase!
     @user = User.new(user_params)
 
     respond_to do |format|

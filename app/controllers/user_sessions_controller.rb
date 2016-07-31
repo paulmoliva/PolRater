@@ -3,6 +3,7 @@ class UserSessionsController < ApplicationController
   end
 
   def create
+    params[:email].downcase!
     if login(params[:email], params[:password])
       redirect_back_or_to(root_path, notice: 'Logged in successfully.')
     else
