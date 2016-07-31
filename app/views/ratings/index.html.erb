@@ -15,12 +15,12 @@
 
     <h2 style= "text-align: center;"><%= link_to name0, '#', :onclick => "vote_fn(#{r+1}, #{pair[0]}, #{pair[1]})" %></h2>
     <div class = "thumbnail">
-    <%= link_to image_tag("#{name0.split.join('_').downcase}.jpg", height: "200"), '#', :onclick => "vote_fn(#{r+1}, #{pair[0]}, #{pair[1]})" %>
+    <%= link_to image_tag("#{name0.split.join('_').downcase}.jpg", class: 'img-thumbnail', height: "200"), '#', :onclick => "vote_fn(#{r+1}, #{pair[0]}, #{pair[1]})" %>
   </div>
     <h1 style= "text-align: center;"> OR </h1>
     <h2 style= "text-align: center;"><%= link_to name1, '#', :onclick => "vote_fn(#{r+1}, #{pair[1]}, #{pair[0]})" %></h2>
     <div class = "thumbnail">
-    <%= link_to image_tag("#{name1.split.join('_').downcase}.jpg", height: "200"), '#', :onclick => "vote_fn(#{r+1}, #{pair[1]}, #{pair[0]})"  %>
+    <%= link_to image_tag("#{name1.split.join('_').downcase}.jpg", class: 'img-thumbnail', height: "200"), '#', :onclick => "vote_fn(#{r+1}, #{pair[1]}, #{pair[0]})"  %>
     </div>
     <%= javascript_tag do %>
         function vote_fn(cat, ch1, ch2) {

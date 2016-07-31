@@ -89,11 +89,12 @@ h1, h2, h3, h4 {
 
 .thumbnail {
     width: 150px;
-    height: 200px;
+    height: 230px;
     overflow: hidden;
     position: relative;
     display: block;
     margin:auto;
+    padding: 5px;
     img {
       position: absolute;
       top: -9999px;
