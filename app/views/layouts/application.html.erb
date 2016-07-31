@@ -41,33 +41,76 @@
 
   <div id="content">
     <p class="flash"><%= flash.notice %></p>
-    <div class = "row">
+    <div class = "row" ">
       <div class = "col-md-2">
-        <% if logged_in? %>
-          <% user_rating_count = current_user.ratings.count %>
-          <p style = "text-align:center;">You've made <%=user_rating_count%> ratings!</p>
-        <% end %>
+
       </div>
-      <div class = "col-md-8" id = "ratings" style="border-style: solid; border-radius: 5px; background-color: rgba(159,159,159, 0.85)"">
-    <%= yield %>
+      <div class = "col-md-8" id = "ratings" style="margin-bottom: 5px; border-style: solid; border-radius: 5px; background-color: rgba(159,159,159, 0.85)">
+        <%= yield %>
+      </div>
+      <div class = "col-md-2">
+        <!-- <p> test <p> -->
+      </div>
     </div>
-    <div class = "col-md-2">
+<% if logged_in? %>
+    <footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+              <% if logged_in? %>
+                <% user_rating_count = current_user.ratings.count %>
+                  <h5>You've made <%=user_rating_count%> ratings!</h5>
+                <% if user_rating_count >= 25%>
+                  <h5><i class="fa fa-road"> SERVERS ARE EXPENISVE!</h5></i>
+                  <a href = "https://squareup.com/store/paul-oliva"><h5>CAN YOU CHIP IN A FEW BUCKS TO HELP US OUT?</h5></a>
+                <% end %>
+              <% end %>
+                <div class="row">
+                    <div class="col-xs-6">
+                        <!-- <ul class="list-unstyled">
+                            <li><a href="">Product</a></li>
+                            <li><a href="">Benefits</a></li>
+                            <li><a href="">Partners</a></li>
+                            <li><a href="">Team</a></li>
+                        </ul> -->
+                    </div>
+                    <div class="col-xs-6">
+                        <!-- <ul class="list-unstyled">
+                            <li><a href="">Documentation</a></li>
+                            <li><a href="">Support</a></li>
+                            <li><a href="">Legal Terms</a></li>
+                            <li><a href="">About</a></li>
+                        </ul> -->
+                    </div>
+                </div>
+                <ul class="nav nav-inline">
+                    <li class="nav-item"><a href=""><i class="fa fa-facebook fa-2x"></i></a></li>
+                    <li class="nav-item"><a href=""><i class="fa fa-twitter fa-2x"></i></a></li>
+                    <li class="nav-item"><a href=""><i class="fa fa-github fa-2x"></i></a></li>
+                    <li class="nav-item"><a href=""><i class="fa fa-instagram fa-2x"></i></a></li>
+                </ul>
+                <br>
+            </div>
+            <!-- <div class="col-md-2">
+            </div> -->
+            <div class="col-md-5">
+              <hr>
+              <% if logged_in? %>
+              <%= "Logged in as #{current_user.email}" %>
+              <%= link_to "(logout)", logout_path %>
+              <% else %>
+              <%= link_to "Login", login_path %> |
+              <%= link_to "Sign up", signup_path %>
+              <% end %>
+              <% if logged_in? && current_user.admin %>
+              <%= link_to 'Admin Panel', new_character_path %>
+              <% end %>
+
+            </div>
+        </div>
     </div>
-  </div>
-  
-    <hr>
-    <!-- <h6>
-      <% if logged_in? %>
-      <%= "Logged in as #{current_user.email}" %>
-      <%= link_to "(logout)", logout_path %>
-      <% else %>
-      <%= link_to "Login", login_path %> |
-      <%= link_to "Sign up", signup_path %>
-      <% end %>
-      <% if logged_in? && current_user.admin %>
-      <%= link_to 'Admin Panel', new_character_path %>
-      <% end %>
-    </h6> -->
+</footer>
+<% end %>
   </div>
   </div>
 </body>
