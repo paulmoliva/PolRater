@@ -87,6 +87,24 @@ h1, h2, h3, h4 {
   background-color: rgba(255, 247, 0, 0.75)
 }
 
+.thumbnail {
+    width: 150px;
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+    display: block;
+    margin:auto;
+    img {
+      position: absolute;
+      top: -9999px;
+      bottom: -9999px;
+      left: -9999px;
+      right: -9999px;
+      margin: auto;
+
+      padding: 10px;
+    }
+}
 
 
 /* Sticky footer position and size
