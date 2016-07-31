@@ -16,7 +16,7 @@ pols =
   'Mike Dunleavy',
   'Vince Beltrami',
   'Jeff Landfield',
-  'Amy Demobski',
+  'Amy Demboski',
   'Don Young',
   'Lisa Murkowski',
   'Mark Begich',
@@ -39,5 +39,20 @@ Category.create!(category_name: 'sexier', super: 'sexiest')
 Category.create!(category_name: 'sleazier', super: 'sleaziest')
 Category.create!(category_name: 'cooler', super: 'coolest')
 Category.create!(category_name: 'more corrupt', super: 'most corrupt')
-Category.create!(category_name: 'more charmismatic', super: 'most charmismatic')
+Category.create!(category_name: 'more charismatic', super: 'most charismatic')
 Category.create!(category_name: 'more obnoxious', super: 'most obnoxious')
+
+
+#TODO get images for:
+#  'Ray Metcalfe',
+#  'Berta Gardner',
+#  'Mike Dunleavy',
+#  'Vince Beltrami',
+#  'Jeff Landfield',
+#  'Don Young',
+#  'Mark Begich',
+#  'Mayor Dan Sullivan',
+#  'Dustin Darden',
+#  'Les Gara',
+#  'Joe Miller',
+#  'Senator Dan Sullivan',

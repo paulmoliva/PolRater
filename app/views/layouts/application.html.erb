@@ -41,7 +41,7 @@
 
   <div id="content">
     <p class="flash"><%= flash.notice %></p>
-    <div class = "row" ">
+    <div class = "row" >
       <div class = "col-md-2">
 
       </div>
@@ -61,6 +61,7 @@
                 <% user_rating_count = current_user.ratings.count %>
                   <h5>You've made <%=user_rating_count%> ratings!</h5>
                 <% if user_rating_count >= 25%>
+                  <h5><%= link_to 'You can now view the current rankings here', characters_path %></h5>
                   <h5><i class="fa fa-road"> SERVERS ARE EXPENISVE!</h5></i>
                   <a href = "https://squareup.com/store/paul-oliva"><h5>CAN YOU CHIP IN A FEW BUCKS TO HELP US OUT?</h5></a>
                 <% end %>

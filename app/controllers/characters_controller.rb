@@ -42,6 +42,7 @@ before_filter :require_login
   # PATCH/PUT /characters/1
   # PATCH/PUT /characters/1.json
   def update
+    @character= Character.find(params[:id])
     respond_to do |format|
       if @character.update(character_params)
         format.html { redirect_to @character, notice: 'Character was successfully updated.' }
