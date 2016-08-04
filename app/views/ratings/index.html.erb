@@ -22,6 +22,7 @@
     <div class = "thumbnail">
     <%= link_to image_tag("#{name1.split.join('_').downcase}.jpg", class: 'img-thumbnail', height: "200"), ratings_path(notice: "#{r+1},#{pair[1]},#{pair[0]}"), :onclick => "vote_fn(#{r+1}, #{pair[1]}, #{pair[0]})"  %>
     </div>
+    <h2 style= "text-align: center;"><%= button_to 'SKIP >>', ratings_path,class:"btn-primary", method: :get%></h2>
     <%= javascript_tag do %>
         function vote_fn(cat, ch1, ch2) {
             /* Assuming you have jQuery */
