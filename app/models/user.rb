@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
                    winner_id: winner_id,
                    loser_id: loser_id,
                    user_id: id)
-    self.flash_notice = "You think #{Character.find(winner_id).character_name} is #{Category.find(category_id).category_name} than #{Character.find(loser_id).character_name}!"
+    # self.flash_notice = "You think #{Character.find(winner_id).character_name} is #{Category.find(category_id).category_name} than #{Character.find(loser_id).character_name}!"
 
   end
 
