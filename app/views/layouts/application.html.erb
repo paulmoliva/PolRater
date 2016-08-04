@@ -69,18 +69,12 @@
                   <h5>You've made <%=user_rating_count%> ratings!</h5>
                 <% if user_rating_count >= 25%>
                   <h5><%= link_to 'You can now view the current rankings here', characters_path %></h5>
-                  <h5><i class="fa fa-road">Servers are expensive.</h5></i>
-                  <a href = "https://squareup.com/store/paul-oliva"><h5>Can you chip in to help us out?</h5></a>
+                  <!-- <h5><i class="fa fa-road">Servers are expensive.</h5></i>
+                  <a href = "https://squareup.com/store/paul-oliva"><h5>Can you chip in to help us out?</h5></a> -->
                 <% end %>
               <% end %>
                 <div class="row">
                     <div class="col-xs-6">
-                        <!-- <ul class="list-unstyled">
-                            <li><a href="">Product</a></li>
-                            <li><a href="">Benefits</a></li>
-                            <li><a href="">Partners</a></li>
-                            <li><a href="">Team</a></li>
-                        </ul> -->
                     </div>
                     <div class="col-xs-6">
                         <!-- <ul class="list-unstyled">
@@ -102,6 +96,12 @@
             <!-- <div class="col-md-2">
             </div> -->
             <div class="col-md-5">
+              <ul class="list-unstyled">
+                <li><a href="#">FAQ</a></li>
+                <li><a href="https://squareup.com/store/paul-oliva">Donate</a></li>
+                <!-- <li><a href="">Partners</a></li>
+                <li><a href="">Team</a></li> -->
+              </ul>
               <hr>
               <% if logged_in? %>
               <%= "Logged in as #{current_user.email}" %>

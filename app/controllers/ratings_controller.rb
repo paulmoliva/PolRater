@@ -1,13 +1,19 @@
 class RatingsController < ApplicationController
   before_filter :require_login, except: [:index]
+
+
   def index
+    if params[:notice]
+      notice = params[:notice].split(",").map(&:to_i)
+      flash.now.notice = "You think #{Character.find(notice[1]).character_name} is #{Category.find(notice[0]).category_name} than #{Character.find(notice[2]).character_name}!"
+    end
     @user = current_user
     @characters = Character.all
     @categories = Category.all
     @num_categories = Category.all.count
   end
 
-  
+
 
   # POST /ajax/vote
  def ajax_vote
@@ -18,10 +24,11 @@ class RatingsController < ApplicationController
      cat = params["cat"].to_i
      # Do something with input parameter and respond as JSON with the output
      @user.record_rating!(cat, ch1, ch2)
-
+     flash.notice = "vote!"
      respond_to do |format|
-       format.json {render :json => {:result => "vote recorded!"}}
+       format.json {render :json => {:notice => "vote recorded!"}}
      end
+    #  render 'ratings'
  end
 
   helper_method :get_category

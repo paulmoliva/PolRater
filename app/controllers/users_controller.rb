@@ -1,13 +1,13 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_filter :require_login, except: [:new, :create]
-  # after_filter :flash_notice, :except => :index
+  after_filter :flash_notice
 
-  # def flash_notice
-  #     if !@reservation.flash_notice.blank?
-  #        flash[:notice] = @reservation.flash_notice
-  #     end
-  # end
+  def flash_notice
+      if !@user.flash_notice.blank?
+         flash.now = @user.flash_notice
+      end
+  end
 
   # GET /users
   # GET /users.json
