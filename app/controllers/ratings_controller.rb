@@ -24,7 +24,6 @@ class RatingsController < ApplicationController
      cat = params["cat"].to_i
      # Do something with input parameter and respond as JSON with the output
      @user.record_rating!(cat, ch1, ch2)
-     flash.notice = "vote!"
      respond_to do |format|
        format.json {render :json => {:notice => "vote recorded!"}}
      end
