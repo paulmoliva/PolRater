@@ -34,7 +34,6 @@
         <%= "Logged in as #{current_user.email}" %>
         <%= link_to "(logout)", logout_path %>
         <% else %>
-        <%= link_to "Login", login_path %> |
         <%= link_to "Sign up", signup_path %>
         <% end %>
         <% if logged_in? && current_user.admin %>

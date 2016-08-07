@@ -41,6 +41,14 @@
 
   <h1>Welcome to the Alaska Politician Rater!</h1>
   <h2>Please <%= link_to "Login", login_path %> or <%= link_to "Sign up", signup_path %> to play.</h2>
+  <div class="row">
+    <div class="col-md-6">
+      <%= render 'user_sessions/form' %>
+    </div>
+    <div class="col-md-6">
+      <%= render 'users/form', user: User.new%>
+    </div>
+  </div>
 
 
 <% end %>
