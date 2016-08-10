@@ -43,15 +43,21 @@
       <li class="nav-item">
         <%= link_to 'Scores', characters_path %>
       </li>
-      <div
-  class="fb-like"
-  data-share="true"
-  data-width="450"
-  data-show-faces="true">
-</div>
     </ul>
 
-
+    <ul class="nav navbar-nav" style="float: right">
+       <li class ="nav-item">
+         <% if current_user %>
+         <%= "Logged in as #{current_user.name}" %>
+         <%= link_to "(Logout)", logout_path %>
+         <% else %>
+         <%= link_to "Sign up", signup_path %>
+         <% end %>
+         <% if current_user && current_user.admin %>
+         <%= link_to 'Admin Panel', new_character_path %>
+         <% end %>
+       </li>
+     </ul>
 
 
   </nav>
@@ -72,6 +78,73 @@
       </div>
     </div>
   </div>
-  </div>
+  <% if current_user %>
+      <footer class="footer">
+      <div class="container">
+          <div class="row">
+              <div class="col-md-7">
+                <% if current_user %>
+                  <% user_rating_count = current_user.ratings.count %>
+                    <h5>You've made <%=user_rating_count%> ratings!</h5>
+                  <% if user_rating_count >= 25%>
+                    <h5><%= link_to 'You can now view the current rankings here', characters_path %></h5>
+                    <!-- <h5><i class="fa fa-road">Servers are expensive.</h5></i>
+                    <a href = "https://squareup.com/store/paul-oliva"><h5>Can you chip in to help us out?</h5></a> -->
+                  <% end %>
+                <% end %>
+                  <div class="row">
+                      <div class="col-xs-6">
+                      </div>
+                      <div class="col-xs-6">
+                          <!-- <ul class="list-unstyled">
+                              <li><a href="">Documentation</a></li>
+                              <li><a href="">Support</a></li>
+                              <li><a href="">Legal Terms</a></li>
+                              <li><a href="">About</a></li>
+                          </ul> -->
+                      </div>
+                  </div>
+                  <ul class="nav nav-inline">
+                      <li class="nav-item"><a href=""><i class="fa fa-facebook fa-2x"></i></a></li>
+                      <li class="nav-item"><a href=""><i class="fa fa-twitter fa-2x"></i></a></li>
+                      <li class="nav-item"><a href=""><i class="fa fa-github fa-2x"></i></a></li>
+                      <li class="nav-item"><a href=""><i class="fa fa-instagram fa-2x"></i></a></li>
+                  </ul>
+                  <br>
+              </div>
+              <!-- <div class="col-md-2">
+              </div> -->
+              <div class="col-md-5">
+                <ul class="list-unstyled">
+                  <li><a href="#">FAQ</a></li>
+                  <li><a href="https://squareup.com/store/paul-oliva">Donate</a></li>
+                  <!-- <li><a href="">Partners</a></li>
+                  <li><a href="">Team</a></li> -->
+                </ul>
+                <hr>
+                <% if current_user %>
+                <%= "Logged in as #{current_user.name}" %>
+                <%= link_to "(logout)", logout_path %>
+                <% else %>
+                <%= link_to "Login", login_path %> |
+                <%= link_to "Sign up", signup_path %>
+                <% end %>
+                <% if current_user && current_user.admin %>
+                <%= link_to 'Admin Panel', new_character_path %>
+                <% end %>
+                <div
+                class="fb-like"
+                data-share="true"
+                data-width="450"
+                data-show-faces="true">
+              </div>
+
+              </div>
+          </div>
+      </div>
+  </footer>
+  <% end %>
+
+</div>
 </body>
 </html>

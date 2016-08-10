@@ -1,7 +1,7 @@
 <% if current_user %>
 
     <h3 style= "text-align: center;">
-      Tell me, <%=@user.user_name.capitalize=%>:
+      Tell me, <%=@user.name.split.first.capitalize=%>:
     </h3>
     <% r = rand(@num_categories) %>
     <% pair = @user.get_new_pair_to_rate(r+1) %>
