@@ -1,7 +1,12 @@
-class User < ActiveRecord::Base
+class UserReference < ActiveRecord::Base
+  authenticates_with_sorcery!
+  validates :user_name, :email, presence: true, uniqueness: true
+  validates_confirmation_of :password, message: "should match confirmation", if: :password
   has_many :ratings
+  attr_accessor :flash_notice
+
   def self.from_omniauth(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_initialize do |user|
+    where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
       user.provider = auth.provider
       user.uid = auth.uid
       user.name = auth.info.name
@@ -51,4 +56,5 @@ class User < ActiveRecord::Base
   def valid_pair?(character1, character2, category_id)
     character1 != character2 && !already_rated?(character1, character2, category_id)
   end
+
 end

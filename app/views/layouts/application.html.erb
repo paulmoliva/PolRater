@@ -15,6 +15,23 @@
 </head>
 
 <body>
+  <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '160728694357785',
+      xfbml      : true,
+      version    : 'v2.7'
+    });
+  };
+
+  (function(d, s, id){
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) {return;}
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+  </script>
 
   <div id="container">
     <nav class="navbar navbar-dark bg-inverse" style="border-radius: 0px">
@@ -26,24 +43,20 @@
       <li class="nav-item">
         <%= link_to 'Scores', characters_path %>
       </li>
+      <div
+  class="fb-like"
+  data-share="true"
+  data-width="450"
+  data-show-faces="true">
+</div>
     </ul>
 
-    <ul class="nav navbar-nav" style="float: right">
-      <li class ="nav-item">
-        <% if logged_in? %>
-        <%= "Logged in as #{current_user.email}" %>
-        <%= link_to "(logout)", logout_path %>
-        <% else %>
-        <%= link_to "Sign up", signup_path %>
-        <% end %>
-        <% if logged_in? && current_user.admin %>
-        <%= link_to 'Admin Panel', new_character_path %>
-        <% end %>
-      </li>
-    </ul>
+
 
 
   </nav>
+
+
 
   <div id="content">
     <p class="flash"><%= flash.notice %></p>
@@ -58,66 +71,6 @@
         <!-- <p> test <p> -->
       </div>
     </div>
-<% if logged_in? %>
-    <footer class="footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-7">
-              <% if logged_in? %>
-                <% user_rating_count = current_user.ratings.count %>
-                  <h5>You've made <%=user_rating_count%> ratings!</h5>
-                <% if user_rating_count >= 25%>
-                  <h5><%= link_to 'You can now view the current rankings here', characters_path %></h5>
-                  <!-- <h5><i class="fa fa-road">Servers are expensive.</h5></i>
-                  <a href = "https://squareup.com/store/paul-oliva"><h5>Can you chip in to help us out?</h5></a> -->
-                <% end %>
-              <% end %>
-                <div class="row">
-                    <div class="col-xs-6">
-                    </div>
-                    <div class="col-xs-6">
-                        <!-- <ul class="list-unstyled">
-                            <li><a href="">Documentation</a></li>
-                            <li><a href="">Support</a></li>
-                            <li><a href="">Legal Terms</a></li>
-                            <li><a href="">About</a></li>
-                        </ul> -->
-                    </div>
-                </div>
-                <ul class="nav nav-inline">
-                    <li class="nav-item"><a href=""><i class="fa fa-facebook fa-2x"></i></a></li>
-                    <li class="nav-item"><a href=""><i class="fa fa-twitter fa-2x"></i></a></li>
-                    <li class="nav-item"><a href=""><i class="fa fa-github fa-2x"></i></a></li>
-                    <li class="nav-item"><a href=""><i class="fa fa-instagram fa-2x"></i></a></li>
-                </ul>
-                <br>
-            </div>
-            <!-- <div class="col-md-2">
-            </div> -->
-            <div class="col-md-5">
-              <ul class="list-unstyled">
-                <li><a href="#">FAQ</a></li>
-                <li><a href="https://squareup.com/store/paul-oliva">Donate</a></li>
-                <!-- <li><a href="">Partners</a></li>
-                <li><a href="">Team</a></li> -->
-              </ul>
-              <hr>
-              <% if logged_in? %>
-              <%= "Logged in as #{current_user.email}" %>
-              <%= link_to "(logout)", logout_path %>
-              <% else %>
-              <%= link_to "Login", login_path %> |
-              <%= link_to "Sign up", signup_path %>
-              <% end %>
-              <% if logged_in? && current_user.admin %>
-              <%= link_to 'Admin Panel', new_character_path %>
-              <% end %>
-
-            </div>
-        </div>
-    </div>
-</footer>
-<% end %>
   </div>
   </div>
 </body>

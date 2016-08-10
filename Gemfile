@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
-
-gem 'sorcery'
+gem 'omniauth-facebook', '~> 1.4.1'
 gem 'bootstrap', '~> 4.0.0.alpha3'
 gem 'rails_12factor', group: :production
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
