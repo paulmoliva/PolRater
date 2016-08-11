@@ -1,5 +1,4 @@
 class UserReference < ActiveRecord::Base
-  authenticates_with_sorcery!
   validates :user_name, :email, presence: true, uniqueness: true
   validates_confirmation_of :password, message: "should match confirmation", if: :password
   has_many :ratings
