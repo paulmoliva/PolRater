@@ -1,7 +1,5 @@
 
-  <% if current_user %>
-    Signed in as <strong><%= current_user.name %></strong>!
-    <%= link_to "Sign out", signout_path, id: "sign_out" %>
-  <% else %>
-    <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
-  <% end %>
+<h1>Welcome to the Alaska Politician Rater</h1>
+
+<%= link_to image_tag('facebook.png'), "/auth/facebook", id: "sign_in", style:'margin: 7px;' %>
+<h2>to play!</h2>
