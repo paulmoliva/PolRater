@@ -5,7 +5,7 @@
   <%= @user.name %>
 </p>
 
-<% user.ratings.each do |rating| %>
+<% @user.ratings.each do |rating| %>
   <%= "#{@characters[rating.winner_id + 1].character_name} is #{@catergories[rating.category_id + 1].category_name} than #{@characters[rating.loser_id + 1].character_name}"%>
 <% end %>
 
