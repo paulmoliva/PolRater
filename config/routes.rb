@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'sessions/destroy'
 
   get 'home/show'
-
+  get "/pages/:page" => "pages#show"
   resources :ratings, :characters, :users, :categories
 
   resources :user_sessions, only: [ :new, :create, :destroy ]
