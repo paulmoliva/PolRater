@@ -2,7 +2,9 @@
     <% user_rating_count = current_user.ratings.count %>
     <% if user_rating_count >= 25 %>
       <div class="panel-group" id="accordion">
-
+        <p>
+          Based on <%= rating_count %> ratings made so far:
+        </p>
         <% @categories[0...1].each do |cat| %>
         <div class="panel panel-default">
           <div class="panel-heading">

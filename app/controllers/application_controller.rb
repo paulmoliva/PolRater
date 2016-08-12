@@ -19,4 +19,9 @@ class ApplicationController < ActionController::Base
     redirect to root_path unless current_user
   end
 
+  helper_method :rating_count
+  def rating_count
+    Rating.all.count
+  end
+
 end
