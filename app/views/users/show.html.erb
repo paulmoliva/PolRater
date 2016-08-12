@@ -6,7 +6,7 @@
 </p>
 
 <% @user.ratings.each do |rating| %>
-  <%= "#{rating}"%>
+  <%= "#{@characters.find(rating.winner_id)}"%>
 <% end %>
 
 
