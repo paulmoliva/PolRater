@@ -19,7 +19,7 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @characters = Character.all
-    @catergories = Category.all
+    @categories = Category.all
   end
 
   # GET /users/new
