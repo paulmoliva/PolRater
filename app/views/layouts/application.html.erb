@@ -51,7 +51,7 @@
          <%= "Logged in as #{current_user.name}" %>
          <%= link_to "(Logout)", logout_path %>
          <% else %>
-         <%= link_to "Sign up", signup_path %>
+         <%= link_to "Sign up", root_path %>
          <% end %>
          <% if current_user && current_user.admin %>
          <%= link_to 'Admin Panel', new_character_path %>
