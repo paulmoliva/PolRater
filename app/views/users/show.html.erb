@@ -6,7 +6,9 @@
 </p>
 
 <% @user.ratings.each do |rating| %>
-  <%= "#{@characters.find(rating.winner_id)}"%>
+  <p>
+    <%= "#{@characters.find(rating.winner_id).character_name} is #{@categories.find(rating.category_id).category_name} than #{@characters.find(rating.loser_id).character_name}"%>
+  </p>
 <% end %>
 
 
