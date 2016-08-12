@@ -1,5 +1,5 @@
 class RatingsController < ApplicationController
-  before_filter :require_login, except: [:index]
+  before_filter :require_login
 
 
   def index
