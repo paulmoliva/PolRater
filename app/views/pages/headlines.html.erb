@@ -7,7 +7,7 @@
       <% winner_name = Character.find(rating.winner_id).character_name %>
       <% loser_name = Character.find(rating.loser_id).character_name %>
       <% cat_name = Category.find(rating.category_id).category_name %>
-      <%= "#{current_user} thinks #{winner_name} is #{cat_name} than #{loser_name}!" %>
+      <%= "#{current_user.name} thinks #{winner_name} is #{cat_name} than #{loser_name}!" %>
     <% end %>
   </h1>
   </div>
