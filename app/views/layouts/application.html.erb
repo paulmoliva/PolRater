@@ -43,6 +43,9 @@
       <li class="nav-item">
         <%= link_to 'Scores', characters_path %>
       </li>
+      <li class="nav-item">
+        <%= link_to 'Headline Generator', page_path('headlines') %>
+      </li>
     </ul>
 
     <ul class="nav navbar-nav" style="float: right">
@@ -116,7 +119,7 @@
               </div> -->
               <div class="col-md-5">
                 <ul class="list-unstyled">
-                  <li><%= link_to "FAQ", '/pages/faq' %></li>
+                  <li><%= link_to "FAQ", page_path('faq') %></li>
                   <li><a href="https://squareup.com/store/paul-oliva">Donate</a></li>
                   <!-- <li><a href="">Partners</a></li>
                   <li><a href="">Team</a></li> -->

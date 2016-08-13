@@ -1,0 +1,61 @@
+<br>
+<div class = 'hentry'>
+  <div class = 'article-square'>
+  <h1 class = 'entry-title' id ='headline'>
+    <% if current_user && current_user.ratings.count > 0 %>
+      <% rating = current_user.ratings.last %>
+      <% winner_name = Character.find(rating.winner_id).character_name %>
+      <% loser_name = Character.find(rating.loser_id).character_name %>
+      <% cat_name = Category.find(rating.category_id).category_name %>
+      <%= "#{current_user} thinks #{winner_name} is #{cat_name} than #{loser}!" %>
+    <% end %>
+  </h1>
+  </div>
+</div>
+<div style="text-align:center; padding:5px;">
+<input type="submit" id="byBtn" value="Random Headline" onclick="change()"/>
+</div>
+
+<script>
+var subject_nouns = ['Mike Chenault', 'Ray Metcalfe', 'Senate Majority staffer', 'Berta Gardner', 'Governor Walker', 'House Majority staffer', 'Pete Kelly', 'Mike Dunleavy', 'Vince Beltrami', 'Jeff Landfield', 'Amy Demobski', 'Don Young', 'Lisa Murkowski', 'Mark Begich', 'Dan Sullivan', 'Legislative Aide', 'David Boyle', 'Michael Chambers', 'Musk Ox Caucus member', 'Ethan Berkowitz', 'Dustin Darden', 'Les Gara', 'Sarah Palin', 'Joe Miller', 'AKGOP Chairman', 'Oil industry lobbyist', 'Internet troll'];
+var verbs = ['slut shames', 'blames', 'suggests relocating capitol to','attacks', 'mulls primary run against', 'cozies up to', 'annoys', 'mulls gubernatorial run with', 'embarrasses', 'trolls', 'flirts with', 'admits to affair with', 'shmoozes', 'to debate', 'attempts to out-Alaska'];
+var places = ['on Dave Stieren Show', 'on Facebook', 'on blog', 'in email newsletter', 'on Twitter', 'on hunting trip', 'while fishing', 'at fundraiser', 'during committee meeting', 'in ADN comment section'];
+var cities = ['Anchorage', 'Bethel', 'Seattle', 'Mad Myrna\'s'];
+var groups = ['tourists', 'Natives', 'commercial fishermen', 'environmentalists', 'Democrats', 'immigrants', 'Muslims', 'Bernie Bros', 'gays', 'libertarians'];
+var problems = ['Fish War', 'budget crisis', 'climate change', 'Speedo-gate', 'legislative gridlock' ];
+
+
+function change(){
+	var randSubject = subject_nouns[Math.floor(Math.random() * subject_nouns.length)];
+  var randVerb = verbs[Math.floor(Math.random() * verbs.length)];
+  if (randVerb == 'mulls primary run against')
+    subject_nouns = ['Mike Chenault', 'Berta Gardner', 'Governor Walker', 'Pete Kelly', 'Mike Dunleavy', 'Don Young', 'Lisa Murkowski', 'Dan Sullivan', 'Musk Ox Caucus member', 'Les Gara'];
+  else if (randVerb == 'suggests relocating capitol to')
+    subject_nouns = cities;
+  var randRecipient = subject_nouns[Math.floor(Math.random() * subject_nouns.length)];
+  while(randSubject == randRecipient)
+    randRecipient = subject_nouns[Math.floor(Math.random() * subject_nouns.length)];
+  var randplace = places[Math.floor(Math.random() * places.length)];
+  if (randVerb == "embarrasses")
+    var newHeadline = 'Drunken ' + randSubject + ' ' + randVerb + ' ' + randRecipient + ' ' + randplace;
+  else if(randVerb == 'blames'){
+    var randGroup = groups[Math.floor(Math.random() * groups.length)];
+    var randProblem = problems[Math.floor(Math.random() * problems.length)];
+    var newHeadline = randSubject + ' ' + randVerb + ' ' + randGroup + ' for ' + randProblem;
+  }
+  else
+	  var newHeadline = randSubject + ' ' + randVerb + ' ' + randRecipient + ' ' + randplace;
+  document.getElementById('headline').innerHTML = newHeadline;
+  subject_nouns = ['Mike Chenault', 'Ray Metcalfe', 'Senate Majority staffer', 'Berta Gardner', 'Governor Walker', 'House Majority staffer', 'Pete Kelly', 'Mike Dunleavy', 'Vince Beltrami', 'Jeff Landfield', 'Amy Demobski', 'Don Young', 'Lisa Murkowski', 'Mark Begich', 'Dan Sullivan', 'Legislative Aide', 'David Boyle', 'Michael Chambers', 'Musk Ox Caucus member', 'Ethan Berkowitz', 'Dustin Darden', 'Les Gara', 'Sarah Palin', 'Joe Miller', 'AKGOP Chairman', 'Oil industry lobbyist', 'Internet troll'];
+}
+
+
+
+
+</script>
+
+<% unless current_user %>
+  <script>
+    change();
+  </script>
+<% end %>

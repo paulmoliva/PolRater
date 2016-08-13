@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+gem 'high_voltage', '~> 3.0.0'
 gem 'seed_dump'
 gem 'omniauth-facebook', '~> 1.4.1'
 gem 'bootstrap', '~> 4.0.0.alpha3'
