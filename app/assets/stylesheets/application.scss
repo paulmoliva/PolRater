@@ -25,10 +25,10 @@ $alaska-blue: #01004A;
 
 body {
     background: url("alaskacover.png") no-repeat 0% 0% fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    -o-background-size: contain;
+    background-size: contain;
   }
 
 h1, h2, h3, h4 {
