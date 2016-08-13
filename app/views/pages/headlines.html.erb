@@ -20,7 +20,7 @@
 </div>
 
 <script>
-var subject_nouns = ['Mike Chenault', 'Ray Metcalfe', 'Senate Majority staffer', 'Berta Gardner', 'Governor Walker', 'House Majority staffer', 'Pete Kelly', 'Mike Dunleavy', 'Vince Beltrami', 'Jeff Landfield', 'Amy Demobski', 'Don Young', 'Lisa Murkowski', 'Mark Begich', 'Dan Sullivan', 'Legislative Aide', 'David Boyle', 'Michael Chambers', 'Musk Ox Caucus member', 'Ethan Berkowitz', 'Dustin Darden', 'Les Gara', 'Sarah Palin', 'Joe Miller', 'AKGOP Chairman', 'Oil industry lobbyist', 'Internet troll'];
+var subject_nouns = ['Mike Chenault', 'Ray Metcalfe', 'Senate Majority staffer', 'Berta Gardner', 'Governor Walker', 'House Majority staffer', 'Pete Kelly', 'Mike Dunleavy', 'Vince Beltrami', 'Jeff Landfield', 'Amy Demboski', 'Don Young', 'Lisa Murkowski', 'Mark Begich', 'Senator Dan Sullivan', 'Mayor Dan Sullivan', 'Legislative Aide', 'David Boyle', 'Michael Chambers', 'Musk Ox Caucus member', 'Ethan Berkowitz', 'Dustin Darden', 'Les Gara', 'Sarah Palin', 'Joe Miller', 'AKGOP Chairman', 'Oil industry lobbyist', 'Internet troll'];
 var verbs = ['slut shames', 'blames', 'suggests relocating capitol to','attacks', 'mulls primary run against', 'cozies up to', 'annoys', 'mulls gubernatorial run with', 'embarrasses', 'trolls', 'flirts with', 'admits to affair with', 'shmoozes', 'to debate', 'attempts to out-Alaska'];
 var places = ['on Dave Stieren Show', 'on Facebook', 'on blog', 'in email newsletter', 'on Twitter', 'on hunting trip', 'while fishing', 'at fundraiser', 'during committee meeting', 'in ADN comment section'];
 var cities = ['Anchorage', 'Bethel', 'Seattle', 'Mad Myrna\'s'];
@@ -32,7 +32,7 @@ function change(){
 	var randSubject = subject_nouns[Math.floor(Math.random() * subject_nouns.length)];
   var randVerb = verbs[Math.floor(Math.random() * verbs.length)];
   if (randVerb == 'mulls primary run against')
-    subject_nouns = ['Mike Chenault', 'Berta Gardner', 'Governor Walker', 'Pete Kelly', 'Mike Dunleavy', 'Don Young', 'Lisa Murkowski', 'Dan Sullivan', 'Musk Ox Caucus member', 'Les Gara'];
+    subject_nouns = ['Mike Chenault', 'Berta Gardner', 'Governor Walker', 'Pete Kelly', 'Mike Dunleavy', 'Don Young', 'Lisa Murkowski', 'Senator Dan Sullivan', 'Musk Ox Caucus member', 'Les Gara'];
   else if (randVerb == 'suggests relocating capitol to')
     subject_nouns = cities;
   var randRecipient = subject_nouns[Math.floor(Math.random() * subject_nouns.length)];
